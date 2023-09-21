@@ -12,7 +12,7 @@ try:
     userpath=url.split('/d/')[1].split('/')[0]
     #print(response.text)
     dirname=response.text.split('dirName: \'')[1].split('\',')[0]
-    dirpath=response.text.split('dirPath: \'')[1].split('\',')[0]
+    relativepath=response.text.split('dirPath: \'')[1].split('\',')[0]
     path=dirpath
     print(userpath)
     print(path)
