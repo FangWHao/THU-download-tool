@@ -6,16 +6,21 @@ import os
 
 pypath=os.path.dirname(os.path.realpath(__file__))
 url=input("请输入要下载的链接: ")
+#cookie: sfcsrftoken=YnXDQSQZ2BS1733Gby0GNmD2U46lzXjcy1cIz2w7goWuCIyr3q0GHAADaDaUoBq6; expires=Tue, 08 Oct 2024 03:36:21 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+
+cookies={
+    'sfcsrftoken':'YnXDQSQZ2BS1733Gby0GNmD2U46lzXjcy1cIz2w7goWuCIyr3q0GHAADaDaUoBq6'
+}
 try:
-    response = requests.get(url)
+    response = requests.get(url,cookies=cookies)
     print("正在解析下载链接")
     userpath=url.split('/d/')[1].split('/')[0]
     #print(response.text)
     dirname=response.text.split('dirName: \'')[1].split('\',')[0]
     relativepath=response.text.split('dirPath: \'')[1].split('\',')[0]
-    path=dirpath
     print(userpath)
-    print(path)
+    print(dirname)
+    path=dirname
 
 except:
     print("无法解析该链接")
@@ -27,7 +32,7 @@ print("开始建立文件树")
 
 tmp=requests.get(makeurl(path))
 data=tmp.json()
-#print(data)
+print(data)
 subfolder=jsonpath(data,'$..folder_path')
 subfile=jsonpath(data,'$..file_path')
 print("建立文件树完成")
