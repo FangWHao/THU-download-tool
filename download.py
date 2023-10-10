@@ -6,13 +6,10 @@ import os
 
 pypath=os.path.dirname(os.path.realpath(__file__))
 url=input("请输入要下载的链接: ")
-#cookie: sfcsrftoken=YnXDQSQZ2BS1733Gby0GNmD2U46lzXjcy1cIz2w7goWuCIyr3q0GHAADaDaUoBq6; expires=Tue, 08 Oct 2024 03:36:21 GMT; Max-Age=31449600; Path=/; SameSite=Lax
 
-cookies={
-    'sfcsrftoken':'YnXDQSQZ2BS1733Gby0GNmD2U46lzXjcy1cIz2w7goWuCIyr3q0GHAADaDaUoBq6'
-}
+
 try:
-    response = requests.get(url,cookies=cookies)
+    response = requests.get(url)
     print("正在解析下载链接")
     userpath=url.split('/d/')[1].split('/')[0]
     #print(response.text)
