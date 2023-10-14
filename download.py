@@ -6,6 +6,7 @@ import os
 
 pypath=os.path.dirname(os.path.realpath(__file__))
 url=input("请输入要下载的链接: ")
+#cookie: sfcsrftoken=YnXDQSQZ2BS1733Gby0GNmD2U46lzXjcy1cIz2w7goWuCIyr3q0GHAADaDaUoBq6; expires=Tue, 08 Oct 2024 03:36:21 GMT; Max-Age=31449600; Path=/; SameSite=Lax
 
 
 try:
@@ -24,9 +25,8 @@ except:
     exit()
 
 def makeurl(targetpath):
-    return "https://cloud.tsinghua.edu.cn/api/v2.1/share-links/"+userpath+"/dirents/?thumbnail_size=48&path="+parse.quote(targetpath)
+    return "https://cloud.tsinghua.edu.cn/api/v2.1/share-links/"+userpath+"/dirents/?thumbnail_size=48&path="
 print("开始建立文件树")
-
 tmp=requests.get(makeurl(path))
 data=tmp.json()
 print(data)
